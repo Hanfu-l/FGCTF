@@ -1,0 +1,108 @@
+{
+    "navbar":{
+        "Personal":"个人信息",
+        "Home":"主页",
+        "Competition":"挑战",
+        "Team":"团队",
+        "About":"关于",
+        "Setings":"设置",
+        "Leaderboard":"排行榜",
+        "Notice":"公告"
+    },
+    "login":{
+        "Title":"登录",
+        "Logout":"登出",
+        "Login":"登录",
+        "Username":"账户",
+        "Password":"密码",
+        "Signup":"没有账户，马上注册"
+    },
+    "register":{
+        "Title":"注册",
+        "Username":"用户名",
+        "Emali":"邮箱号",
+        "Password":"密码",
+        "TwoPassword":"确认密码",
+        "Submit":"提交"
+
+    },
+    "Team":{
+        "Title":"团队名",
+        "Members":"成员",
+        "Teaminformation":"团队信息",
+        "TeamMembers":"成员列表",
+        "CreateTeam":"创建团队",
+        "DeleteMember":"删除成员",
+        "MemberName":"成员名称",
+        "Token":"团队Token",
+        "Join":"加入现有团队",
+        "Competitions":"团队竞赛"
+
+    },
+    "Competition":{
+        "Title":"挑战",
+        "Time":"时间",
+        "StartTime":"竞赛开始时间",
+        "EndTime":"结束时间",
+        "Competitions":"题目列表",
+        "InCompetition":"进入题目",
+        "AttackAndDefense":"进入题目",
+        "Leaderboard":"排行榜",
+        "RoundNumber":"轮次数",
+        "RoundTime":"轮次时间"
+        
+
+    },
+    "User":{
+        "Username":"用户名",
+        "Team":"团队",
+        "TeamToken":"团队Token",
+        "Email":"邮箱",
+        "Id":"ID"
+
+    },
+    "Flag":{
+
+    },
+    "Topic":{
+        "Titele":"题目",
+        "Name":"题目名称",
+        "Type":"类型",
+        "DockerName":"镜像名称",
+        "DockerPort":"镜像端口",
+        "Points":"积分",
+        "CreateTopic":"创建题目",
+        "Description":"题目描述",
+        "Visable":"显示",
+        "UnVisable":"不显示",
+        "isVisable":"是否显示",
+        "KeyValue":"标志值"
+        
+    },
+    "Seting":{
+        "Statistics":"统计",
+        "Competitions":"题目",
+        "Teams":"团队",
+        "Users":"用户",
+        "Topics":"挑战",
+        "Admin":"管理员",
+        "Notice":"公告"
+    },
+    "Leaderboard":{
+        "Team":"团队",
+        "User":"用户",
+        "Points":"积分",
+        "Leader":"排名"
+    },
+    "Notice":{
+        "Title":"公告",
+        "Name":"公告标题",
+        "Description":"公告内容",
+        "CreateNotice":"创建公告",
+        "Visable":"是否显示",
+        "CancelCreate":"取消创建",
+        "Create":"创建"
+    }
+
+
+}

@@ -1,0 +1,30 @@
+{
+    "index":{
+        "Personal":"Personal Information"
+        
+    },
+
+    "login":{
+        "Logout":"Log out"
+    },
+    "register":{
+
+    },
+    "Team":{
+
+    },
+    "Competition":{
+
+    },
+    "User":{
+
+    },
+    "Flag":{
+
+    },
+    "Topic":{
+        
+    }
+    
+
+}
