@@ -3,9 +3,20 @@ import os
 import signal
 import sys
 
+#获取当前文件路径
+current_file_path=os.path.abspath(__file__)
+
+#获取当前文件的目录
+current_dir=os.path.dirname(current_file_path)
+
+
 # 定义 Django 和 Vue 项目的路径
-DJANGO_PROJECT_PATH = "G:/FGCTFEnv/awd_django"  # 替换为你的 Django 项目路径
-VUE_PROJECT_PATH = "G:/FGCTFEnv/awd_vue"  # 替换为你的 Vue 项目路径
+DJANGO_PROJECT_RELATIVE_PATH = "awd_django"  # Django 项目的相对路径
+VUE_PROJECT_RELATIVE_PATH = "awd_vue"  # Vue 项目的相对路径
+
+
+DJANGO_PROJECT_PATH = os.path.join(current_dir, DJANGO_PROJECT_RELATIVE_PATH)
+VUE_PROJECT_PATH = os.path.join(current_dir, VUE_PROJECT_RELATIVE_PATH)
 
 def run_django():
     """启动 Django 服务器"""
