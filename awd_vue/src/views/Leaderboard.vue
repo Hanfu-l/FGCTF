@@ -21,11 +21,10 @@
           </thead>
           <tbody>
             <tr
-            v-for="user in users"
-            v-bind:key="user.pk"
+            v-for="data in LeaderBoardData"
             >
-              <td>{{user.username}}</td>
-              <td>{{user.first_name}}</td>
+              <td>{{data.Score_by}}</td>
+              <td>{{data.score}}</td>
             </tr>
             
             
@@ -38,12 +37,12 @@
 import axios from 'axios'
 
 export default {
-    name:"SetUsers",
-    data() {
-        return{
-            users:{}
-        }
-    },
+    name:"LeaderBoard",
+    data(){
+              return{
+                LeaderBoardData:{}
+              }
+          },
     mounted(){
         this.GetMyAccount()
     },
@@ -52,17 +51,15 @@ export default {
                 this.$store.commit('setIsLoading', true)
 
                 await axios
-                    .get('/api/v1/Seting/Leader/')
+                    .get('/api/v1/GetLeaderBoard/')
                     .then(response=>{
-                       this.users=response.data.Users
-                       console.log(this.users)
+                        this.LeaderBoardData=response.data
                     })
                     .catch(error => {
                         console.log(error)
                     })
-
                 this.$store.commit('setIsLoading', false)
-            }
+            },
     }
 }
 </script>

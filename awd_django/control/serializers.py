@@ -2,10 +2,8 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from Team.models import Team
-from Team.serializers import TeamSerializer
+from topic.models import Score
 
-from competition.models import Competition,Topic
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,40 +19,13 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
-class CompetitionSerializer(serializers.ModelSerializer):
-    teams =TeamSerializer(read_only=True)
-    token = serializers.CharField(allow_blank=True, required=False)
-    class Meta:
-        model = Competition
-        fields = (
-            "id",
-            "name",
-            "starttime",
-            "rounttime",
-            "rountnumber",
-            "currentrount",
-            "flagformat",
-            "endtime",
-            "token",
-            "teams",
-            "rounttimelist",
-            "IsActivate",
-        )
 
-class TopicSerializer(serializers.ModelSerializer):
+class LeaderBoardSerializer(serializers.ModelSerializer):
+    Score_by=serializers.CharField(source='Score_by.username')
+
     class Meta:
-        model=Topic
+        model = Score
         fields=(
-            'attackscore',
-            'checkscore',
-            'initscore',
-            'name',
-            'external',
-            'interior',
-            'interiorpath',
-            'sshname',
-            'sshpassword',
-            'flagpath',
-            'competition',
+            'Score_by',
+            'score'
         )
-

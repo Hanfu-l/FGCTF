@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Topic,Notice
+from .models import Topic
 
 class TopicSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,11 +17,15 @@ class TopicSerializer(serializers.ModelSerializer):
         )
 
 
-class NoticeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Notice
-        fields ={
+class TopicListSerializer(serializers.ModelSerializer):
+     class Meta:
+        model = Topic
+        fields =(
+            "pk",
             "name",
+            "score",
             "Description",
-            "Visabel",
-        }
+        )
+
+
+

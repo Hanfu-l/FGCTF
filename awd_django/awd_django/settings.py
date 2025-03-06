@@ -24,11 +24,12 @@ SECRET_KEY = 'django-insecure-cw3i-s3!h2rxa3l7x&m*_y$k%jn^uq)_#c+w*kmb%eor%t+f&x
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.245.136','127.0.0.1']
 
 CORS_ALLOWED_ORIGINS = [
+    'http://192.168.245.136:8080',
     'http://127.0.0.1:8080',
-    'http://127.0.0.1:8080',
+    'http://192.168.245.136',
 ]
 
 REST_FRAMEWORK = {
@@ -52,12 +53,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    'Team.apps.TeamConfig',
     'control.apps.ControlConfig',
-    'competition.apps.CompetitionConfig',
     'topic.apps.TopicConfig',
-    'member.apps.MemberConfig',
-    'notice.apps.NoticeConfig',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +140,34 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#Celery配置Redis
+CELERY_BROKER_URL = 'redis://192.168.245.136:6379/0'  # Redis 的地址和端口
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'redis://192.168.245.136:6379/0'  # 使用 Redis 存储任务结果
+
+
+
+#Cache绑定redis
+
+# Redis 缓存配置
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://192.168.245.136:6379/1',  # Redis 服务地址及数据库索引
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+# 配置 Redis 连接 (如果需要使用 Django 的会话存储)
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+
+
+
+PRESET_PORTS=[20000,20100]

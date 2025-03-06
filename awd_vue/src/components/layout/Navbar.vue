@@ -15,18 +15,17 @@
             <router-link class="navbar-item" to="/home">
                 {{ $t('navbar.Home') }}
             </router-link>
-            <router-link class="navbar-item" to="/competition">
+            <router-link class="navbar-item" to="/TopicList">
                 {{ $t('navbar.Competition') }}
             </router-link>
-            <router-link class="navbar-item" to="/team">
-                {{ $t('navbar.Team') }}
-            </router-link>
-            
-             <router-link class="navbar-item" to="/leaderboard">
+            <router-link class="navbar-item" to="/leaderboard">
                 {{ $t('navbar.Leaderboard') }}
             </router-link>
-             <router-link class="navbar-item" to="/notice">
-                 {{ $t('navbar.Notice') }}
+            <router-link class="navbar-item" to="/LangChain">
+                {{ $t('navbar.LangChain') }}
+            </router-link>
+            <router-link class="navbar-item" to="/About">
+                {{ $t('navbar.About') }}
             </router-link>
           </div>
           <div class="navbar-end">
@@ -50,9 +49,6 @@
                     </router-link>
 
                     </template>
-
-
-
                     <span class="icon-text">
                         <span class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
@@ -106,20 +102,8 @@
           
             <div  class="navbar-menu ">
               <div class="navbar-start">
-                <router-link class="navbar-item" :to="{name:'Statistics'}">
-                    {{ $t('Seting.Statistics') }}
-                </router-link>
-                <router-link class="navbar-item" :to="{name:'SetUsers'}">
+                <router-link>
                     {{ $t('Seting.Users') }}
-                </router-link>
-                <router-link class="navbar-item" :to="{name:'SetTeams'}">
-                    {{ $t('Seting.Teams') }}
-                </router-link>
-                <router-link class="navbar-item" :to="{name:'SetTopics'}">
-                    {{ $t('Seting.Topics') }}
-                </router-link>
-                <router-link class="navbar-item" :to="{name:'SetNotice'}">
-                    {{ $t('Seting.Notice') }}
                 </router-link>
               </div>
               <div class="navbar-end">
@@ -149,14 +133,9 @@ export default {
             }
         },
         mounted(){
-           this.getmy(),
            this.getStanding()
         },
         methods:{
-            async getmy(){
-                console.log(store.state.isadmin)
-                
-            },
             async logout() {
                 await axios
                     .post('/api/v1/token/logout/')

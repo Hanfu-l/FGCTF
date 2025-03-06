@@ -7,7 +7,8 @@
         "About":"关于",
         "Setings":"设置",
         "Leaderboard":"排行榜",
-        "Notice":"公告"
+        "Notice":"公告",
+        "LangChain":"智问"
     },
     "login":{
         "Title":"登录",
@@ -76,7 +77,8 @@
         "Visable":"显示",
         "UnVisable":"不显示",
         "isVisable":"是否显示",
-        "KeyValue":"标志值"
+        "KeyValue":"标志值",
+        "TopicList":"题目列表"
         
     },
     "Seting":{
