@@ -7,7 +7,11 @@ import  {createI18n}  from 'vue-i18n'
 import './assets/global.css'
 import {VueFeatherIcons} from 'feather-icons'
 
-axios.defaults.baseURL = 'http://localhost:8000'
+
+let protocol=window.Location.protocol
+let host=window.Location.host
+
+axios.defaults.baseURL = "http://192.168.245.136:8000/"
 
 const i18n = createI18n({
     locale: 'zh', // 设置默认语言

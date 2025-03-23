@@ -88,12 +88,20 @@ def GetTopicList(request):
 @api_view(['POST'])
 def DockerRun(request):
      user=request.user
+
+     #锁
+     lock_key=f"user_docker_lock:{user}"
+     Port=PortPool()
+
      userdata=User.objects.filter(username=user).first()
      user_docker_data,created=UserDockerData.objects.get_or_create(DockerUser=user)
 
-     if user_docker_data.RunDockerNumber==0:
-          
-          try:
+     if not Port.Put_Docker_Lock(lock_key):
+          return Response("Docker is starting,Please wait...")
+
+     try:
+
+          if user_docker_data.RunDockerNumber==0:
                #镜像名称md5编码
                md5=hashlib.md5()
                seed=str(userdata.first_name)+str(datetime.timestamp(datetime.now()))
@@ -104,10 +112,6 @@ def DockerRun(request):
                #获取题目信息
                topicid=request.data['topicid']
                topicdata=Topic.objects.filter(pk=topicid).first()
-
-               Port=PortPool()
-
-
 
                client=docker.from_env()
 
@@ -124,16 +128,14 @@ def DockerRun(request):
                     user_docker_data.save()
 
                return Response("Docker Run Success")
-
-          except docker.errors.DockerException as e:
-               error_message=str(e)
-               return Response(f"Docker Run Fail : {error_message}")
-
-
-
-     else:
-          return Response("User RunDocker Max")
-
+          else:
+               return Response("User RunDocker Max")
+     except docker.errors.DockerException as e:
+          error_message=str(e)
+          return Response(f"Docker Run Fail : {error_message}")
+    
+     finally:
+          Port.Delete_Docker_Lock(lock_key)
 
 
 #获取当前启动镜像的信息

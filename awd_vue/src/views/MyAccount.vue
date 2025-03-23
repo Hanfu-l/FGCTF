@@ -24,17 +24,11 @@
             </div>
             <div class="card-content">
               <div class="content">
-                <p><strong>用户名 :</strong> CTF_Player</p>
-                <p><strong>邮箱 :</strong> player@example.com</p>
-                <p><strong>当前排名 :</strong> #5</p>
-                <p><strong>积分 :</strong> 1200</p>
+                <p><strong>用户名 :</strong> {{ this.user.username }}</p>
+                <p><strong>当前排名 :</strong> {{ this.user.rank+1 }}</p>
+                <p><strong>积分 :</strong> {{ this.user.score }}</p>
               </div>
             </div>
-          </div>
-          <!-- 折线图 -->
-          <div class="box mt-4">
-            <div class="echart" ref="chartRef" :style="myChartStyle"></div>
-
           </div>
         </div>
       </div>
@@ -45,30 +39,17 @@
 <script>
     import axios from 'axios'
     import store from '@/store'
-    import * as echarts from "echarts";
 
 
     export default {
         name: 'MyAccount',
         data(){
             return{
-                user: {
-                username: "CTF_Player",
-                email: "player@example.com",
-                rank: 5,
-                score: 1200,
-                myChart: {},
-                xData: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], //横坐标
-                yData: [23, 24, 18, 25, 27, 28, 25], //人数数据
-                myChartStyle: { float: "left", width: "100%", height: "400px" }
-                      },
+                user:{},
             }
         },
         mounted(){
             this.GetMyAccount()
-            this.$nextTick(() => {
-              this.DrawLine();
-            });
         },
         methods: {
             
@@ -76,40 +57,14 @@
                 this.$store.commit('setIsLoading', true)
 
                 await axios
-                    .get('/api/v1/users/me')
+                    .get('/api/v1/GetMydata')
                     .then(response=>{
-                        this.username=response.data.username
-                        this.email=response.data.email
+                      this.user=response.data
                     })
                     .catch(error => {
                         console.log(error)
                     })
-                await axios
-                .get('/api/v1/score/user/')
-                .then(response=>{
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-
                 this.$store.commit('setIsLoading', false)
-            },
-
-            DrawLine(){
-              if (!this.$refs.chartRef) {
-                console.error("ECharts 容器未找到！");
-                return;
-            }
-            this.myChart = echarts.init(this.$refs.chartRef);
-            this.myChart.setOption({
-                xAxis: { type: "category", data: this.xData },
-                yAxis: { type: "value" },
-                series: [{ data: this.yData, type: "line" }]
-            });
-
-            window.addEventListener("resize", () => {
-                this.myChart.resize();
-            });
             },
 
         }

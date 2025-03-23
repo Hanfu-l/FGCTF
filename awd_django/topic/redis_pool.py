@@ -42,3 +42,12 @@ class PortPool:
         清空池中所有端口
         """
         self.redis_client.delete(self.pool_name)
+
+    #创建锁
+    def Put_Docker_Lock(self,name):
+        return self.redis_client.set(name,"LOCKED",ex=10,nx=True)
+
+    def Delete_Docker_Lock(self,name):
+        if self.redis_client.get(name) == "LOCKED":  # 确保锁存在
+            return self.redis_client.delete(name)  # 删除锁
+        return False  # 锁不存在或已经被其他进程释放

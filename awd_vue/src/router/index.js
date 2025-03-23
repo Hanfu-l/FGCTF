@@ -14,6 +14,9 @@ import TopicDes from '@/views/Topic/TopicDes.vue';
 //Ai
 import LangChain from '../views/dashboard/Chat.vue';
 
+//关于
+import About from '../views/AboutView.vue'
+
 const routes = [
   {
     path: '/home',
@@ -94,6 +97,18 @@ const routes = [
     path: '/LangChain',
     name: 'LangChain',
     component: LangChain,
+    beforeEnter: (to, from, next) => {
+      LoadCss(to)
+      next();
+    },
+    meta: {
+      requireLogin: true,
+    },
+  },
+  {
+    path: '/About',
+    name: 'About',
+    component: About,
     beforeEnter: (to, from, next) => {
       LoadCss(to)
       next();

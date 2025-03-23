@@ -122,7 +122,7 @@ import axios from 'axios';
                 await axios
                   .post('/api/v1/Topic/RunTopic',formData)
                   .then(response=>{
-                    this.$forceUpdate()
+                    this.GetDockerData()
                   })
                   .catch(error => {
                     console.log(error)
@@ -138,7 +138,7 @@ import axios from 'axios';
                 await axios
                   .get('/api/v1/Topic/CloseTopic')
                   .then(response=>{
-          
+                    this.GetDockerData()
                   })
                   .catch(error => {
                     console.log(error)

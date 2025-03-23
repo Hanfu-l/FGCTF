@@ -23,8 +23,9 @@
             <tr
             v-for="data in LeaderBoardData"
             >
-              <td>{{data.Score_by}}</td>
-              <td>{{data.score}}</td>
+              
+              <td>{{data[0]}}</td>
+              <td>{{data[1]}}</td>
             </tr>
             
             
