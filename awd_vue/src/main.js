@@ -21,6 +21,8 @@ const i18n = createI18n({
     }
   })
 
+document.title="FGCTF"
+
 
 createApp(App).use(store).use(i18n).use(router).use(VueFeatherIcons).mount('#app')
 

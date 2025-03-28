@@ -4,7 +4,7 @@
           <section class="hero is-black is-small pb-6">
               <div class="hero-body container is-max-desktop">
                 <p class="title  ">
-                  {{ $t('navbar.Leaderboard') }}
+                  {{ $t('navbar.About') }}
                 </p>
               </div>
           </section>

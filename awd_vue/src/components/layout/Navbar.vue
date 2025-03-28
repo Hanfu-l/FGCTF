@@ -4,9 +4,7 @@
     <nav class="navbar is-black is-spaced">
         <div class="navbar-brand">
           <a class="navbar-item">
-            
-              <img src="../../assets/bulma-logo-white.png" width="112" height="28">
-            
+            <h1 class="title is-3 mr-6 has-text-white">FGCTF</h1>
           </a>
         </div>
       
